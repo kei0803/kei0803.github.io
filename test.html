@@ -46,11 +46,12 @@ lfloat{
 .my-float{
 	margin-top:22px;
 }
+
     </style>
   </head>
   <body>
 
-    <img src="1.jpg" id="dimg" class="img-fluid" alt="...">
+    <img src="1.jpg" id="dimg" class="rounded mx-auto d-block" height="695" alt="...">
     <a href="#" id="lbutt" class="float" style="position:fixed;left:40px;">
       <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" style="padding-top:10" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
@@ -78,6 +79,26 @@ lfloat{
         const x = parseInt(attribute.slice(0,-4)) - 1
         document.getElementById("dimg").setAttribute("src",(String(x)+'.jpg'));
       });
+      let count = 1;
+      const element2 = document.getElementById("dimg");
+      element2.addEventListener("click", function() {
+        if (count%2) {
+          element2.setAttribute("height",("auto"));
+          element2.setAttribute("width",("100%"));
+         } else {
+          element2.setAttribute("height",("695"));
+          element2.removeAttribute("width");
+         }
+         count += 1;
+      });
+      element2.onerror = function(){
+        let attribute = element2.getAttribute("src");
+        const x = parseInt(attribute.slice(0,-4)) + 1
+        if (x<204){
+          element2.setAttribute("src",(String(x)+'.jpg'));
+        }
+       }
+
     </script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
